@@ -1,33 +1,55 @@
-include <iostream>
+program1 
+
+#include<iostream>
 using namespace std;
-#define INT_MIN -2147483627 ;
-int findMax(int num1,int num2,int num3){
-  int min = INT_MIN;
-  if(num1>min)
-  {
-     min = num1;
-  }
-  if(num2>min)
-  {
-     min = num2;
-  }
-  if(num3>min)
-  {
-      min = num3;
-  }
-  return min;
-}
+
+class Complex{
+    public: 
+   Complex(int r=0 ,int i =0){
+       real = r;
+       img = i;
+       
+   }
+   void print(){
+       cout<<real<<" +i"<<img<<"\n";
+   }
+   Complex operator+(Complex const &obj){
+       Complex result ;
+       result.real = real + obj.real;
+      result.img = img + obj.img;
+      return result; 
+       
+   }
+   
+    void operator<<(Complex const &obj) {
+     
+  cout<<real<<" +i"<<img<<"\n";
+
+    }
+    
+    void operator >>(Complex const &obj){
+        cout<<"enter real part \n";
+        cin>>real;
+        cout<<"enter img part \n ";
+        cin>>img;
+        
+    }
+    
+   private: 
+   int real ,img ;
+};
+
+int main(){
+    Complex c1(10,5), c2(2,4);
+    Complex c3 = c1 + c2;
+    c1.print();
+    c2.print();
+    c3.print();
+    Complex c4 ;
+    
+    c4>> c4 ;
+   cout<<"the number you entered is \n ";
+    c4 << c4;
 
 
-int main()
-{
-    int num1,num2,num3;
-    cout<<"Please, enter three numbers"<<"\n";
-    cin>>num1>>num2>>num3;
-    int max = findMax(num1,num2,num3);
-    cout<<"the max number is: ";
-    cout<<max;
-
-
-    return 0;
 }
